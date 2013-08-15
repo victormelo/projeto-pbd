@@ -9,3 +9,5 @@ class Usuario(models.Model):
     instituicao = models.CharField(max_length = 80)
     observacao = models.CharField(max_length = 80)
     
+# class Endereco(models.Model):
+    
