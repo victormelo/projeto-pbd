@@ -1,5 +1,7 @@
 # Django settings for agronomia project.
 
+#testando
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
