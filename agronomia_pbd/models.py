@@ -1,15 +1,15 @@
 from django.db import models
-from django.contrib.auth.models import User, UserManager
 
-
-class Usuario(User):
-    objects = UserManager()
+class Usuario(models.Model):
+    senha = models.CharField(max_length = 80)
+    email = models.CharField(max_length = 80)
     instituicao = models.CharField(max_length = 80)
     observacao = models.CharField(max_length = 80)
     cidade = models.CharField(max_length = 80)
     fazenda = models.CharField(max_length = 80)
     estado = models.CharField(max_length = 80)
     rua = models.CharField(max_length = 80)
+
 class Solo(models.Model):
     nome = models.CharField(max_length = 80)
     diametro = models.FloatField()

@@ -7,6 +7,10 @@ from django.views.generic import TemplateView
 
 urlpatterns = patterns('',
     url(r'^register/$', views.register),
+    url(r'^login/$', views.login),
+    url(r'^logado/$', views.logado),
+    url(r'^logout/$', views.logout),
+
     url(r'^$', TemplateView.as_view(template_name='index.html'), name="index"),
     
 )
