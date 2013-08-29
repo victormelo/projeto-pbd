@@ -3,6 +3,8 @@ from django.db import models
 class Usuario(models.Model):
     senha = models.CharField(max_length = 80)
     email = models.CharField(max_length = 80)
+    nome = models.CharField(max_length = 80)
+    sobrenome = models.CharField(max_length = 80)
     instituicao = models.CharField(max_length = 80)
     observacao = models.CharField(max_length = 80)
     cidade = models.CharField(max_length = 80)

@@ -6,7 +6,6 @@ from django.views.generic import TemplateView
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^register/$', views.register),
     url(r'^login/$', views.login),
     url(r'^logado/$', views.logado),
     url(r'^logout/$', views.logout),
