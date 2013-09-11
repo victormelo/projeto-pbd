@@ -9,7 +9,8 @@ urlpatterns = patterns('',
     url(r'^login/$', views.login),
     url(r'^logado/$', views.logado),
     url(r'^logout/$', views.logout),
-
-    url(r'^$', TemplateView.as_view(template_name='index.html'), name="index"),
+    url(r'^$', views.index),
+    url(r'^register/$', views.register),
+    url(r'^logado/register$', views.registrarExperimento),
     
 )

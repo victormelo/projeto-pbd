@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>BD Agronomia</title>
+	<link rel="stylesheet" href="../static/bootstrap.css" >
+	
+	<script src="../static/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="../static/bootstrap.js"></script>
+
+</head>
+<body>
+	
+	<nav class="navbar navbar-default navbar-top" role="navigation">
+	  <!-- Brand and toggle get grouped for better mobile display -->
+	    <a class="navbar-brand" href="#">BD Agronomia</a>
+	    <p class="navbar-text pull-right">Logado como {{usuario.nome}} {{usuario.sobrenome}} <a href="/logout/" class="btn btn-default btn-xs">Sair</a> </p>
+		
+	</nav>
+
+	<div class="container">
+		<div class="well">Cadastrar Experimento</div>
+		<form role="form" action="/registrarExperimento/" method="post">  
+			{% for field in form %}
+				<div class="form-group">
+					{%if field.errors%}
+						<div class="alert alert-danger">
+							<h5>{{ field.errors }}</h5>
+						</div>
+					{%endif%}
+					
+					<h5>{{field.label_tag}}</h5> {{field}}
+				</div>
+			{% endfor %}
+			<button type="submit" class="btn btn-primary">Enviar</button>
+			<button type="reset" class="btn btn-default">Limpar</button>
+		</form>
+		
+	</div>
+		
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+.errorlist {
+	margin: 0;
+	padding: 0;
+}
+
+.errorlist li {
+	height: 15px;
+	list-style:none;
+}
+form .alert-danger, .errorlist li .alert {
+	padding: 5px;
+	margin-bottom: 0;
+}

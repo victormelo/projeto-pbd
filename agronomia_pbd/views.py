@@ -7,6 +7,38 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from models import Usuario
 from django.http import HttpResponse, HttpResponseRedirect
+from forms import UsuarioForm, ExperimentoForm
+
+def register(request):
+    cadastro = 0
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/erro/')
+        else:
+            cadastro = 1
+    else:
+        form = UsuarioForm()
+    return render_to_response('index.html', {'form' : form, 'cadastro' : cadastro})
+
+def index(request):
+    form = UsuarioForm()
+    return render_to_response('index.html', {'form' : form})
+
+def registrarExperimento(request):
+    try:
+        m = Usuario.objects.get(id=request.session['member_id'])
+    except:
+        return HttpResponseRedirect("/")
+        m = None
+    
+    if request.method == 'POST':
+        form = ExperimentoForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/erro/')
+    else:
+        form = ExperimentoForm()
+    return render_to_response('registrarExperimento.html', {'form' : form, 'usuario' : m})
 
 def login(request):
     try:
@@ -34,5 +66,6 @@ def logado(request):
     try:
         m = Usuario.objects.get(id=request.session['member_id'])
     except:
+        return HttpResponseRedirect("/")
         m = None
     return render_to_response('logado.html', {'usuario' : m})

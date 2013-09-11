@@ -21,8 +21,9 @@ class Solo(models.Model):
     areia = models.FloatField()
     tempo = models.FloatField()
     lamina = models.FloatField()
-    densidade = models.FloatField()
-    teorUmidade = models.FloatField()
+    densidadeSolo = models.FloatField()
+    densidadeDaParticula = models.FloatField()
+    resistenciaDoSolo = models.FloatField()
         
 class Instrumento(models.Model):
     nome = models.CharField(max_length = 80)
