@@ -7,10 +7,10 @@ class Usuario(models.Model):
     sobrenome = models.CharField(max_length = 80)
     instituicao = models.CharField(max_length = 80)
     observacao = models.CharField(max_length = 80)
+    pais = models.CharField(max_length=80)
     cidade = models.CharField(max_length = 80)
-    fazenda = models.CharField(max_length = 80)
+    endereco = models.CharField(max_length = 80)
     estado = models.CharField(max_length = 80)
-    rua = models.CharField(max_length = 80)
 
 class Solo(models.Model):
     nome = models.CharField(max_length = 80)
@@ -23,26 +23,30 @@ class Solo(models.Model):
     lamina = models.FloatField()
     densidadeSolo = models.FloatField()
     densidadeDaParticula = models.FloatField()
+    teorUmidade = models.FloatField()
+    teorUmidadeFinal = models.FloatField()
     resistenciaDoSolo = models.FloatField()
-        
-class Instrumento(models.Model):
-    nome = models.CharField(max_length = 80)
-    tipo = models.CharField(max_length = 80)
-    
-class Experimento(models.Model):
+    condicao = models.ForeignKey(CondicaoSolo)
+
+# class Instrumento(models.Model):
+#     nome = models.CharField(max_length = 80)
+#     tipo = models.CharField(max_length = 80)
+
+class Teste(models.Model):
     usuario = models.ForeignKey(Usuario)
-    nome = models.CharField(max_length = 80)
-    instrumentos = models.ManyToManyField(Instrumento)
+    identificacao = models.CharField(max_length = 80)
     solos = models.ManyToManyField(Solo)
     
 class Localizacao(models.Model):
-    experimento = models.ForeignKey(Experimento)
+    solo = models.ForeignKey(Solo)
     latitude = models.FloatField()
     longitude = models.FloatField()
     altitude = models.FloatField()
+    municipio = models.CharField(max_length=80)
+    estado = models.CharField(max_length=80)
+    pais = models.CharField(max_length=80)
     
-class Tratamento(models.Model):
-    experimento = models.ForeignKey(Experimento)
+class CondicaoSolo(models.Model):
     nome = models.CharField(max_length = 80)
     descricao = models.CharField(max_length = 80)
     

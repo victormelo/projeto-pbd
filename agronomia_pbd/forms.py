@@ -50,9 +50,8 @@ class UsuarioForm(DefaultForm):
     repitaSenha = forms.CharField(max_length = 80, widget=forms.PasswordInput(), label=u"Repita a Senha")
     instituicao = forms.CharField(max_length = 80, label=u"Instituição")
     cidade = forms.CharField(max_length = 80)
-    fazenda = forms.CharField(max_length = 80, required=False)
+    endereco = forms.CharField(max_length = 80, required=False, label=u"Endereço (rua, numero)")
     estado = forms.ChoiceField(choices=ESTADOS_CHOICES)
-    rua = forms.CharField(max_length = 80)
     observacao = forms.CharField(widget = forms.Textarea, label=u"Observações", required=False)
 
 class ExperimentoForm(DefaultForm):
