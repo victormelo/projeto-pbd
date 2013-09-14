@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
-from models import Instrumento
+
 class DefaultForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(DefaultForm, self).__init__(*args, **kwargs)
@@ -62,7 +62,6 @@ class ExperimentoForm(DefaultForm):
     nomeSolo = forms.CharField(max_length = 80, label=u"Nome do Solo")
     nomeTratamento = forms.CharField(max_length=80, label=u"Nome do Tratamento")
     descricaoTratamento = forms.CharField(max_length=80, label=u"Descrição do Tratamento")
-    instrumentos = forms.ModelMultipleChoiceField(queryset=Instrumento.objects.all())
     #curva de infiltração
     tempo = forms.FloatField()
     lamina = forms.FloatField()

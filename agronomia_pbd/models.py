@@ -12,6 +12,10 @@ class Usuario(models.Model):
     endereco = models.CharField(max_length = 80)
     estado = models.CharField(max_length = 80)
 
+class CondicaoSolo(models.Model):
+    nome = models.CharField(max_length = 80)
+    descricao = models.CharField(max_length = 80) 
+
 class Solo(models.Model):
     nome = models.CharField(max_length = 80)
     diametro = models.FloatField()
@@ -36,7 +40,9 @@ class Teste(models.Model):
     usuario = models.ForeignKey(Usuario)
     identificacao = models.CharField(max_length = 80)
     solos = models.ManyToManyField(Solo)
-    
+
+
+
 class Localizacao(models.Model):
     solo = models.ForeignKey(Solo)
     latitude = models.FloatField()
@@ -46,7 +52,5 @@ class Localizacao(models.Model):
     estado = models.CharField(max_length=80)
     pais = models.CharField(max_length=80)
     
-class CondicaoSolo(models.Model):
-    nome = models.CharField(max_length = 80)
-    descricao = models.CharField(max_length = 80)
+
     
