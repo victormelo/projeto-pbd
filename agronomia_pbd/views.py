@@ -14,7 +14,15 @@ def register(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
         if form.is_valid():
-            return HttpResponseRedirect('/erro/')
+            cd = form.cleaned_data
+            try:
+                Usuario(senha = cd['senha'], email = cd['email'], nome = cd['nome'], sobrenome=cd['sobrenome'],
+                    instituicao=cd['instituicao'], observacao = cd['observacao'], cidade=cd['cidade'],
+                    pais=cd['pais'], estado=cd['estado'], endereco = cd['endereco']).save()
+                return HttpResponseRedirect('/logado/')
+
+            except:
+                cadastro= 1
         else:
             cadastro = 1
     else:

@@ -2,7 +2,7 @@ from django.db import models
 
 class Usuario(models.Model):
     senha = models.CharField(max_length = 80)
-    email = models.CharField(max_length = 80)
+    email = models.CharField(max_length = 80, unique = True)
     nome = models.CharField(max_length = 80)
     sobrenome = models.CharField(max_length = 80)
     instituicao = models.CharField(max_length = 80)
@@ -32,16 +32,10 @@ class Solo(models.Model):
     resistenciaDoSolo = models.FloatField()
     condicao = models.ForeignKey(CondicaoSolo)
 
-# class Instrumento(models.Model):
-#     nome = models.CharField(max_length = 80)
-#     tipo = models.CharField(max_length = 80)
-
 class Teste(models.Model):
     usuario = models.ForeignKey(Usuario)
     identificacao = models.CharField(max_length = 80)
     solos = models.ManyToManyField(Solo)
-
-
 
 class Localizacao(models.Model):
     solo = models.ForeignKey(Solo)

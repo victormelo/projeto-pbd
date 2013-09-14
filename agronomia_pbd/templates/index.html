@@ -59,6 +59,12 @@
 							</div>
 					    	
    						{% endif %}
+
+   						{% if form.non_field_errors %}
+							<div class="alert alert-danger">
+								<h5> {{ form.non_field_errors }} </h5>
+							</div>
+   						{% endif %}
 						<form role="form" action="/register/" method="post">  
 							{% for field in form %}
 								<div class="form-group">
@@ -67,7 +73,7 @@
 											<h5>{{ field.errors }}</h5>
 										</div>
 									{%endif%}
-									
+
 									<h5>{{field.label_tag}}</h5> {{field}}
 								</div>
 							{% endfor %}

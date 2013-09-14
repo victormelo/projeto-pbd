@@ -5,6 +5,7 @@
 
 .errorlist li {
 	height: 15px;
+	margin-top: 5px;
 	list-style:none;
 }
 form .alert-danger, .errorlist li .alert {
