@@ -12,3 +12,7 @@ form .alert-danger, .errorlist li .alert {
 	padding: 5px;
 	margin-bottom: 0;
 }
+
+.container-botoes {
+	margin: 10px;
+}

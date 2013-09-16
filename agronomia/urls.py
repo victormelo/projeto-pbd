@@ -12,5 +12,5 @@ urlpatterns = patterns('',
     url(r'^$', views.index),
     url(r'^register/$', views.register),
     url(r'^logado/register$', views.registrarExperimento),
-    
+    url(r'^logado/register/solo$', views.registrarSolo),
 )

@@ -3,6 +3,9 @@
 
 from django import forms
 from models import Usuario
+from models import Teste
+from django.forms import ModelForm
+
 
 class DefaultForm(forms.Form):
     def __init__(self, *args, **kwargs):
@@ -256,28 +259,35 @@ class UsuarioForm(DefaultForm):
         
         return self.cleaned_data
 
-class ExperimentoForm(DefaultForm):
-    nomeExperimento = forms.CharField(max_length = 80, label=u"Nome do Experimento")
-    latitude = forms.FloatField()
-    longitude = forms.FloatField()
-    altitude = forms.FloatField()
-    nomeSolo = forms.CharField(max_length = 80, label=u"Nome do Solo")
-    nomeTratamento = forms.CharField(max_length=80, label=u"Nome do Tratamento")
-    descricaoTratamento = forms.CharField(max_length=80, label=u"Descrição do Tratamento")
-    #curva de infiltração
-    tempo = forms.FloatField()
-    lamina = forms.FloatField()
+class TesteForm(DefaultForm):
+    identificacao = forms.CharField(max_length = 80, label=u"Identificação do Teste")
     
-    #curva de granulometria
+class SoloForm(DefaultForm):
+    nome = forms.CharField(max_length = 80)
     diametro = forms.FloatField(label=u"Diâmetro")
     frequencia = forms.FloatField(label=u"Frequência")
     
-    silte = forms.FloatField()
-    areia = forms.FloatField()
-    argila = forms.FloatField()
+    silte = forms.FloatField(label=u"Silte (%)")
+    areia = forms.FloatField(label=u"Areia (%)")
+    argila = forms.FloatField(label=u"Argila (%)")
+    
+    latitude = forms.FloatField()
+    longitude = forms.FloatField()
+    altitude = forms.FloatField()
     
     densidadeSolo = forms.FloatField(label=u"Densidade do solo (g.cm ^ -3)")
     densidadeParticula = forms.FloatField(label=u"Densidade da particula (g.cm ^ -3)")
     resistenciaSolo = forms.FloatField(label=u"Resistência do solo à penetração (MPa)")
+    
+    nomeCondicao = forms.CharField(max_length=80, label=u"Nome condição")
+    descricaoCondicao = forms.CharField(max_length=80, label=u"Descrição da condição")
+    
+    tempo = forms.FloatField()
+    lamina = forms.FloatField()
+    
+
+    
+
+    
     
     

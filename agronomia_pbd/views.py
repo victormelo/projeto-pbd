@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from models import Usuario
 from django.http import HttpResponse, HttpResponseRedirect
-from forms import UsuarioForm, ExperimentoForm
+from forms import UsuarioForm, TesteForm, SoloForm
 
 def register(request):
     cadastro = 0
@@ -41,12 +41,16 @@ def registrarExperimento(request):
         m = None
     
     if request.method == 'POST':
-        form = ExperimentoForm(request.POST)
+        form_solo = SoloForm(request.POST)
+
+        form = TesteForm(request.POST)
         if form.is_valid():
             return HttpResponseRedirect('/erro/')
     else:
-        form = ExperimentoForm()
-    return render_to_response('registrarExperimento.html', {'form' : form, 'usuario' : m})
+        form_solo = SoloForm()
+        form = TesteForm()
+    return render_to_response('registrarTeste.html', {'form' : form, 'form_solo' : form_solo, 'usuario' : m})
+
 
 def login(request):
     try:

@@ -13,7 +13,6 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
 
-        'ENGINE': 'django.db.backends.mysq',   # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'pbd-agronomia',                      # Or path to database file if using sqlite3.
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'USER': 'root',
