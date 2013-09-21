@@ -20,7 +20,7 @@
 
 	<div class="container">
 		<div class="well">Cadastrar Teste</div>
-		<form role="form" action="/registrarExperimento/" method="post">  
+		<form role="form" action="" method="post">  
 			
 			<div class="form-group">
 				{%if form.identificacao.errors%}
@@ -39,64 +39,61 @@
 				<button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-arrow-down"></span></button>
 				
 			</p>
-			<!-- Modal -->
-			<div class="modal fade" id="modalCadastrarSolo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title">Adicionar Novo Solo</h4>
-						</div>
-						<div class="modal-body">
-						    {% if form.errors %}
-								<div class="alert alert-danger">
-									<h5><strong>Erro!</strong> Por favor, corrija o{{form.errors|pluralize}} erro{{form.errors|pluralize}} abaixo.</h5>
-								</div>
-						    	
-	   						{% endif %}
 
-	   						{% if form.non_field_errors %}
-								<div class="alert alert-danger">
-									<h5> {{ form.non_field_errors }} </h5>
-								</div>
-	   						{% endif %}
-							<form role="form" action="/register/" method="post">  
-								{% for field in form %}
-									<div class="form-group">
-										{%if field.errors%}
-											<div class="alert alert-danger">
-												<h5>{{ field.errors }}</h5>
-											</div>
-										{%endif%}
-
-										<h5>{{field.label_tag}}</h5> {{field}}
-									</div>
-								{% endfor %}
-								<button type="submit" class="btn btn-primary">Enviar</button>
-								<button type="reset" class="btn btn-default">Limpar</button>
-							</form>
-						</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-							</div>
-						</div><!-- /.modal-content -->
-				</div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
 			<h5><strong>Solos Disponíveis</strong></h5>
 			
 			<select name="" multiple class="form-control" id="selectSolos">
 				<option value="seaed">aesease</option>
 			</select>
-				
-
-				
-		
-				
 			<br/>
 			<button type="submit" class="btn btn-primary">Enviar</button>
 			<button type="reset" class="btn btn-default">Limpar</button>
+			<a href="../logado"><button type="button" class="btn btn-warning">Voltar</button></a>
+			
 		</form>
-		
+		<!-- Modal -->
+		<div class="modal fade" id="modalCadastrarSolo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Adicionar Novo Solo</h4>
+					</div>
+					<div class="modal-body">
+					    {% if form_solo.errors %}
+							<div class="alert alert-danger">
+								<h5><strong>Erro!</strong> Por favor, corrija o{{form_solo.errors|pluralize}} erro{{form_solo.errors|pluralize}} abaixo.</h5>
+							</div>
+					    	
+   						{% endif %}
+
+   						{% if form_solo.non_field_errors %}
+							<div class="alert alert-danger">
+								<h5> {{ form_solo.non_field_errors }} </h5>
+							</div>
+   						{% endif %}
+						<form role="form" action="register/solo" method="post">  
+							{% for field in form_solo %}
+								<div class="form-group">
+									{%if field.errors%}
+										<div class="alert alert-danger">
+											<h5>{{ field.errors }}</h5>
+										</div>
+									{%endif%}
+
+									<h5>{{field.label_tag}}</h5> {{field}}
+								</div>
+							{% endfor %}
+							<button type="submit" class="btn btn-primary">Enviar</button>
+							<button type="reset" class="btn btn-default">Limpar</button>
+						</form>
+					</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+						</div>
+					</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->		
 	</div>
 		
 </body>

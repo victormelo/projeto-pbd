@@ -263,6 +263,7 @@ class TesteForm(DefaultForm):
     identificacao = forms.CharField(max_length = 80, label=u"Identificação do Teste")
     
 class SoloForm(DefaultForm):
+    
     nome = forms.CharField(max_length = 80)
     diametro = forms.FloatField(label=u"Diâmetro")
     frequencia = forms.FloatField(label=u"Frequência")
@@ -275,9 +276,12 @@ class SoloForm(DefaultForm):
     longitude = forms.FloatField()
     altitude = forms.FloatField()
     
+    teorUmidade = forms.FloatField(label=u"Teor de Umidade")
+    teorUmidadeFinal = forms.FloatField(label=u"Teor de Umidade Final")
+
     densidadeSolo = forms.FloatField(label=u"Densidade do solo (g.cm ^ -3)")
-    densidadeParticula = forms.FloatField(label=u"Densidade da particula (g.cm ^ -3)")
-    resistenciaSolo = forms.FloatField(label=u"Resistência do solo à penetração (MPa)")
+    densidadeDaParticula = forms.FloatField(label=u"Densidade da particula (g.cm ^ -3)")
+    resistenciaDoSolo = forms.FloatField(label=u"Resistência do solo à penetração (MPa)")
     
     nomeCondicao = forms.CharField(max_length=80, label=u"Nome condição")
     descricaoCondicao = forms.CharField(max_length=80, label=u"Descrição da condição")

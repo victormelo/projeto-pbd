@@ -5,7 +5,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
-from models import Usuario
+from models import Usuario, Solo, CondicaoSolo
 from django.http import HttpResponse, HttpResponseRedirect
 from forms import UsuarioForm, TesteForm, SoloForm
 
@@ -51,6 +51,37 @@ def registrarExperimento(request):
         form = TesteForm()
     return render_to_response('registrarTeste.html', {'form' : form, 'form_solo' : form_solo, 'usuario' : m})
 
+def registrarSolo(request):
+    try:
+        m = Usuario.objects.get(id=request.session['member_id'])
+    except:
+        return HttpResponseRedirect("/")
+        m = None
+    
+    cadastro = 0
+    if request.method == 'POST':
+        form = SoloForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            # try:
+            condicaoSolo = CondicaoSolo(nome = cd['nomeCondicao'], descricao = cd['descricaoCondicao'])
+            condicaoSolo.save()
+            Solo(condicao_id = condicaoSolo.id, nome = cd['nome'], diametro = cd['diametro'], frequencia = cd['frequencia'], 
+                silte=cd['silte'], areia=cd['areia'], argila=cd['argila'],teorUmidade = cd['teorUmidade'],
+                teorUmidadeFinal =cd['teorUmidadeFinal'],
+                densidadeSolo=cd['densidadeSolo'], densidadeDaParticula=cd['densidadeDaParticula'], 
+                resistenciaDoSolo = cd['resistenciaDoSolo'], tempo = cd['tempo'], lamina = cd['lamina']).save()
+            return HttpResponseRedirect('/logado/register')
+    # latitude=cd['latitude'], longitude = cd['longitude'], altitude=cd['altitude'],
+    # resistenciaSolo = forms.FloatField(label=u"Resistência do solo à penetração (MPa)")
+            # except:
+                # cadastro = 1
+        else:
+            cadastro = 1
+    else:
+        form = UsuarioForm()
+    return render_to_response('registrarTeste.html', {'form' : form, 'cadastro' : cadastro})
+    
 
 def login(request):
     try:
